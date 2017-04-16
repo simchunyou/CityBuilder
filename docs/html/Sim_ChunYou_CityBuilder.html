@@ -1,0 +1,340 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module CityGenerator028_V2</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>CityGenerator028_V2</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/i7208422/Python Programming/Assignment/CityGenerator028_V2.py">/home/i7208422/Python Programming/Assignment/CityGenerator028_V2.py</a></font></td></tr></table>
+    <p><tt>CityBuilder&nbsp;Generator<br>
+A&nbsp;python&nbsp;script&nbsp;that&nbsp;allows&nbsp;creation&nbsp;of&nbsp;custom&nbsp;cities&nbsp;as&nbsp;well&nbsp;as&nbsp;providing&nbsp;a&nbsp;calculation&nbsp;for&nbsp;object&nbsp;placements.<br>
+The&nbsp;script&nbsp;also&nbsp;allows&nbsp;building&nbsp;generations&nbsp;and&nbsp;some&nbsp;traffic&nbsp;simulation.<br>
+inspired&nbsp;by&nbsp;Sim&nbsp;City&nbsp;and&nbsp;other&nbsp;city&nbsp;simulation&nbsp;games.<br>
+inspired&nbsp;by&nbsp;Anthony&nbsp;Scavarelli's&nbsp;work&nbsp;from&nbsp;<a href="http://portfolio.anthony-scavarelli.com/2012/01/27/autodesk-maya-city-builder/">http://portfolio.anthony-scavarelli.com/2012/01/27/autodesk-maya-city-builder/</a><br>
+inspired&nbsp;and&nbsp;reference&nbsp;from&nbsp;Ramesh&nbsp;Balachandran's&nbsp;script&nbsp;on&nbsp;AI&nbsp;Traffic&nbsp;from&nbsp;https://drive.google.com/folderview?id=0By0_WhpQpCZlWmNmaHYtMi1SbTQ&amp;usp=sharing<br>
+and&nbsp;https://www.youtube.com/watch?v=SYpBSe6G0m0</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="maya.cmds.html">maya.cmds</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-AnglesTweak"><strong>AnglesTweak</strong></a>(listNum)</dt><dd><tt>Stops&nbsp;the&nbsp;car&nbsp;from&nbsp;turning&nbsp;at&nbsp;a&nbsp;Junction&nbsp;after&nbsp;reaching&nbsp;a&nbsp;certain&nbsp;threshold<br>
+Helps&nbsp;to&nbsp;reposition&nbsp;the&nbsp;rotation&nbsp;of&nbsp;a&nbsp;car&nbsp;if&nbsp;its&nbsp;rotate&nbsp;Y&nbsp;is&nbsp;of&nbsp;a&nbsp;certain&nbsp;value.<br>
+This&nbsp;is&nbsp;to&nbsp;make&nbsp;sure&nbsp;the&nbsp;car&nbsp;is&nbsp;going&nbsp;straight<br>
+&nbsp;<br>
+listNum&nbsp;:&nbsp;is&nbsp;the&nbsp;car&nbsp;index&nbsp;position&nbsp;in&nbsp;the&nbsp;carList</tt></dd></dl>
+ <dl><dt><a name="-BuildingCreator"><strong>BuildingCreator</strong></a>(NumOfSeperation, Seperation)</dt><dd><tt>Creates&nbsp;a&nbsp;customised&nbsp;skyscrapper<br>
+&nbsp;<br>
+NumOfSeperation&nbsp;:&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;a&nbsp;skyscrapper&nbsp;is&nbsp;shrunk&nbsp;inwards&nbsp;as&nbsp;it&nbsp;goes&nbsp;upwards<br>
+Seperation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;floors&nbsp;inbetween&nbsp;each&nbsp;seperation<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;skyscrapper</tt></dd></dl>
+ <dl><dt><a name="-ConvertNumberStringToList"><strong>ConvertNumberStringToList</strong></a>(NumberString)</dt><dd><tt>Converts&nbsp;the&nbsp;NumberString&nbsp;to&nbsp;a&nbsp;list.&nbsp;This&nbsp;is&nbsp;for&nbsp;the&nbsp;function&nbsp;of&nbsp;building&nbsp;a&nbsp;skyscrapper&nbsp;from&nbsp;a&nbsp;plane.<br>
+&nbsp;<br>
+NumberString&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;number&nbsp;string&nbsp;inputed&nbsp;by&nbsp;the&nbsp;user<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;NumberString&nbsp;converted&nbsp;into&nbsp;a&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-CreateCar"><strong>CreateCar</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;Simple&nbsp;Car.&nbsp;Only&nbsp;used&nbsp;for&nbsp;traffic&nbsp;simulation<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;A&nbsp;simple&nbsp;Car</tt></dd></dl>
+ <dl><dt><a name="-CreateCrossJunction"><strong>CreateCrossJunction</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;Cross-Junction<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;Cross-Junction</tt></dd></dl>
+ <dl><dt><a name="-CreateRtCurveRoad"><strong>CreateRtCurveRoad</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;Curve&nbsp;Road<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;Curve&nbsp;Road</tt></dd></dl>
+ <dl><dt><a name="-CreateStraightRoad"><strong>CreateStraightRoad</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;Straight&nbsp;Road<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;Straight&nbsp;Road</tt></dd></dl>
+ <dl><dt><a name="-CreateTJunction"><strong>CreateTJunction</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;T-Junction<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;T-Junction</tt></dd></dl>
+ <dl><dt><a name="-CreateTrafficLight"><strong>CreateTrafficLight</strong></a>()</dt><dd><tt>Creates&nbsp;a&nbsp;Traffic&nbsp;Light<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;Traffic&nbsp;Light</tt></dd></dl>
+ <dl><dt><a name="-PositionTweak"><strong>PositionTweak</strong></a>(car, road)</dt><dd><tt>Tweak&nbsp;the&nbsp;position&nbsp;of&nbsp;the&nbsp;car,&nbsp;to&nbsp;make&nbsp;the&nbsp;car&nbsp;keep&nbsp;to&nbsp;its&nbsp;lane<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;car&nbsp;that&nbsp;is&nbsp;being&nbsp;tweaked<br>
+road:&nbsp;is&nbsp;the&nbsp;straight&nbsp;road&nbsp;the&nbsp;car&nbsp;is&nbsp;currently&nbsp;on</tt></dd></dl>
+ <dl><dt><a name="-ResetUserObjectSelected"><strong>ResetUserObjectSelected</strong></a>()</dt><dd><tt>Resets&nbsp;the&nbsp;name&nbsp;of&nbsp;an&nbsp;object&nbsp;in&nbsp;the&nbsp;text&nbsp;field<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;resetted&nbsp;string&nbsp;to&nbsp;be&nbsp;placed&nbsp;in&nbsp;the&nbsp;text&nbsp;field</tt></dd></dl>
+ <dl><dt><a name="-UserObjectSelected"><strong>UserObjectSelected</strong></a>()</dt><dd><tt>Change&nbsp;and&nbsp;store&nbsp;the&nbsp;name&nbsp;of&nbsp;an&nbsp;object&nbsp;in&nbsp;the&nbsp;text&nbsp;field<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;new&nbsp;name&nbsp;to&nbsp;be&nbsp;inputted&nbsp;in&nbsp;the&nbsp;text&nbsp;field</tt></dd></dl>
+ <dl><dt><a name="-actionAIPrep"><strong>actionAIPrep</strong></a>()</dt><dd><tt>Prepare&nbsp;the&nbsp;lists&nbsp;required&nbsp;for&nbsp;AI&nbsp;to&nbsp;work</tt></dd></dl>
+ <dl><dt><a name="-actionConfirm"><strong>actionConfirm</strong></a>(OwnTerrainUIList, DefaultTerrainUIList, NoiseIntensity, NoiseHeight, AIUIList, UsingOwnTerrainCheckBox, CreationList, *args)</dt><dd><tt>Confirm&nbsp;all&nbsp;actions&nbsp;in&nbsp;Creating&nbsp;Terrain&nbsp;and&nbsp;makes&nbsp;the&nbsp;'Create&nbsp;Landscape'&nbsp;UI&nbsp;untouchable<br>
+&nbsp;<br>
+OwnTerrainUIList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;which&nbsp;allows&nbsp;the&nbsp;User&nbsp;to&nbsp;create&nbsp;his&nbsp;own&nbsp;terrain<br>
+DefaultTerrainUIList&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;which&nbsp;allows&nbsp;the&nbsp;User&nbsp;to&nbsp;use&nbsp;the&nbsp;default&nbsp;terrain<br>
+NoiseIntensity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;intensity&nbsp;of&nbsp;how&nbsp;much&nbsp;Noise&nbsp;is&nbsp;applied&nbsp;from&nbsp;0&nbsp;to&nbsp;1<br>
+NoiseHeight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;translate&nbsp;Y&nbsp;of&nbsp;the&nbsp;Noise&nbsp;that&nbsp;is&nbsp;being&nbsp;applied<br>
+AIUIList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;which&nbsp;allows&nbsp;the&nbsp;User&nbsp;to&nbsp;create&nbsp;traffic&nbsp;simulation<br>
+UsingOwnTerrainCheckBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;checkbox&nbsp;that&nbsp;holds&nbsp;the&nbsp;value&nbsp;of&nbsp;whether&nbsp;the&nbsp;user&nbsp;is&nbsp;using&nbsp;his&nbsp;own&nbsp;terrain&nbsp;or&nbsp;not<br>
+CreationList&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;elements&nbsp;to&nbsp;generate&nbsp;the&nbsp;buildings/objects&nbsp;and&nbsp;roads</tt></dd></dl>
+ <dl><dt><a name="-actionCreateSkyscrapperFromPlane"><strong>actionCreateSkyscrapperFromPlane</strong></a>(NoOfSeperationsSliderGroup, FloorsPerSeperationString, *pArgs)</dt><dd><tt>Creates&nbsp;a&nbsp;customised&nbsp;skyscrapper<br>
+&nbsp;<br>
+NoOfSeperationsSliderGroup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;a&nbsp;skyscrapper&nbsp;is&nbsp;shrunk&nbsp;inwards&nbsp;as&nbsp;it&nbsp;goes&nbsp;upwards<br>
+FloorsPerSeperationString&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;floors&nbsp;inbetween&nbsp;each&nbsp;seperation</tt></dd></dl>
+ <dl><dt><a name="-actionCreateTrafficLinks"><strong>actionCreateTrafficLinks</strong></a>()</dt><dd><tt>Groups&nbsp;traffic&nbsp;lights&nbsp;together&nbsp;to&nbsp;create&nbsp;a&nbsp;traffic&nbsp;link&nbsp;such&nbsp;that&nbsp;if<br>
+one&nbsp;traffic&nbsp;light&nbsp;is&nbsp;green,&nbsp;the&nbsp;rest&nbsp;is&nbsp;red</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateCar"><strong>actionGenerateCar</strong></a>(rotationMethod, *pArgs)</dt><dd><tt>Generates&nbsp;a&nbsp;car&nbsp;on&nbsp;a&nbsp;selected&nbsp;face/s<br>
+&nbsp;<br>
+rotationMethod&nbsp;&nbsp;:is&nbsp;the&nbsp;chosen&nbsp;method&nbsp;of&nbsp;rotation&nbsp;out&nbsp;of&nbsp;the&nbsp;2&nbsp;options&nbsp;given</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateCrossJunctionRoad"><strong>actionGenerateCrossJunctionRoad</strong></a>(rotationMethod, *pArgs)</dt><dd><tt>Generate&nbsp;a&nbsp;CrossJunction&nbsp;on&nbsp;a&nbsp;selected&nbsp;face/s<br>
+&nbsp;<br>
+rotationMethod&nbsp;&nbsp;:is&nbsp;the&nbsp;chosen&nbsp;method&nbsp;of&nbsp;rotation&nbsp;out&nbsp;of&nbsp;the&nbsp;2&nbsp;options&nbsp;given</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateRtCurveRoad"><strong>actionGenerateRtCurveRoad</strong></a>(rotationMethod, *pArgs)</dt><dd><tt>Generate&nbsp;a&nbsp;Rt&nbsp;Curve&nbsp;Road&nbsp;on&nbsp;a&nbsp;selected&nbsp;face/s.<br>
+&nbsp;<br>
+rotationMethod&nbsp;&nbsp;:is&nbsp;the&nbsp;chosen&nbsp;method&nbsp;of&nbsp;rotation&nbsp;out&nbsp;of&nbsp;the&nbsp;2&nbsp;options&nbsp;given</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateSkyscrapper"><strong>actionGenerateSkyscrapper</strong></a>(SkyscrapperSelection, Skyscrapper1, Skyscrapper2, Skyscrapper3, rotationMethod, *pArgs)</dt><dd><tt>Generate&nbsp;a&nbsp;random&nbsp;or&nbsp;specified&nbsp;Skyscrapper&nbsp;on&nbsp;a&nbsp;selected&nbsp;face/s.<br>
+&nbsp;<br>
+SkyscrapperSelection&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;slider&nbsp;to&nbsp;allow&nbsp;the&nbsp;user&nbsp;to&nbsp;decide&nbsp;a&nbsp;random&nbsp;skyscrapper&nbsp;or&nbsp;a&nbsp;specified&nbsp;skyscrapper&nbsp;would&nbsp;be&nbsp;generated.&nbsp;0&nbsp;=&nbsp;random<br>
+Skyscrapper1&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;stored&nbsp;string&nbsp;in&nbsp;the&nbsp;Building&nbsp;Tab,&nbsp;Skyscrapper1&nbsp;textfield<br>
+Skyscrapper2&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;stored&nbsp;string&nbsp;in&nbsp;the&nbsp;Building&nbsp;Tab,&nbsp;Skyscrapper2&nbsp;textfield<br>
+Skyscrapper3&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;stored&nbsp;string&nbsp;in&nbsp;the&nbsp;Building&nbsp;Tab,&nbsp;Skyscrapper3&nbsp;textfield<br>
+rotationMethod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;chosen&nbsp;method&nbsp;of&nbsp;rotation&nbsp;out&nbsp;of&nbsp;the&nbsp;2&nbsp;options&nbsp;given</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateStraightRoad"><strong>actionGenerateStraightRoad</strong></a>(rotationMethod, *pArgs)</dt><dd><tt>Generate&nbsp;a&nbsp;Straight&nbsp;Road&nbsp;on&nbsp;a&nbsp;selected&nbsp;face/s.<br>
+&nbsp;<br>
+rotationMethod&nbsp;&nbsp;:is&nbsp;the&nbsp;chosen&nbsp;method&nbsp;of&nbsp;rotation&nbsp;out&nbsp;of&nbsp;the&nbsp;2&nbsp;options&nbsp;given</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateTJunctionRoad"><strong>actionGenerateTJunctionRoad</strong></a>(rotationMethod, *pArgs)</dt><dd><tt>Generate&nbsp;a&nbsp;TJunction&nbsp;on&nbsp;a&nbsp;selected&nbsp;face/s<br>
+&nbsp;<br>
+rotationMethod&nbsp;&nbsp;:is&nbsp;the&nbsp;chosen&nbsp;method&nbsp;of&nbsp;rotation&nbsp;out&nbsp;of&nbsp;the&nbsp;2&nbsp;options&nbsp;given</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateTerrain"><strong>actionGenerateTerrain</strong></a>(TerrainSize, NoiseIntensity, NoiseHeight, UsingOwnTerrainCheckBox, UserTerrainInput, *pArgs)</dt><dd><tt>Generates&nbsp;the&nbsp;Terrain<br>
+&nbsp;<br>
+TerrainSize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;how&nbsp;big&nbsp;the&nbsp;user&nbsp;wants&nbsp;the&nbsp;terrain&nbsp;to&nbsp;be.&nbsp;The&nbsp;number&nbsp;is&nbsp;not&nbsp;representive&nbsp;of&nbsp;its&nbsp;dimensions.<br>
+NoiseIntensity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;intensity&nbsp;of&nbsp;how&nbsp;much&nbsp;Noise&nbsp;is&nbsp;applied&nbsp;from&nbsp;0&nbsp;to&nbsp;1<br>
+NoiseHeight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;translate&nbsp;Y&nbsp;of&nbsp;the&nbsp;Noise&nbsp;that&nbsp;is&nbsp;being&nbsp;applied<br>
+UsingOwnTerrainCheckBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Check&nbsp;if&nbsp;the&nbsp;user&nbsp;is&nbsp;using&nbsp;his&nbsp;own&nbsp;terrain&nbsp;or&nbsp;not<br>
+UserTerrainInput&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;If&nbsp;the&nbsp;user&nbsp;is&nbsp;using&nbsp;his&nbsp;own&nbsp;terrain,&nbsp;the&nbsp;string&nbsp;will&nbsp;be&nbsp;stored&nbsp;in&nbsp;this&nbsp;input</tt></dd></dl>
+ <dl><dt><a name="-actionGenerateTrafficLight"><strong>actionGenerateTrafficLight</strong></a>(rotationMethod, *pArgs)</dt><dd><tt>Generates&nbsp;a&nbsp;traffic&nbsp;light&nbsp;on&nbsp;a&nbsp;selected&nbsp;face/s<br>
+&nbsp;<br>
+rotationMethod&nbsp;&nbsp;:is&nbsp;the&nbsp;chosen&nbsp;method&nbsp;of&nbsp;rotation&nbsp;out&nbsp;of&nbsp;the&nbsp;2&nbsp;options&nbsp;given</tt></dd></dl>
+ <dl><dt><a name="-actionNotUsingOwnTerrain"><strong>actionNotUsingOwnTerrain</strong></a>(OwnTerrainUIList, DefaultTerrainUIList, *args)</dt><dd><tt>Switches&nbsp;on&nbsp;and&nbsp;off&nbsp;UI&nbsp;elements&nbsp;when&nbsp;clicking&nbsp;on&nbsp;the&nbsp;"Use&nbsp;Own&nbsp;Terrain"&nbsp;checkbox<br>
+&nbsp;<br>
+OwnTerrainUIList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;which&nbsp;allows&nbsp;the&nbsp;User&nbsp;to&nbsp;create&nbsp;his&nbsp;own&nbsp;terrain<br>
+DefaultTerrainUIList&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;which&nbsp;allows&nbsp;the&nbsp;User&nbsp;to&nbsp;use&nbsp;the&nbsp;default&nbsp;terrain</tt></dd></dl>
+ <dl><dt><a name="-actionRotateCar"><strong>actionRotateCar</strong></a>()</dt><dd><tt>Rotate&nbsp;Selected&nbsp;Cars&nbsp;on&nbsp;a&nbsp;Left&nbsp;Hand&nbsp;Drive&nbsp;Road</tt></dd></dl>
+ <dl><dt><a name="-actionRotateObject"><strong>actionRotateObject</strong></a>()</dt><dd><tt>Rotate&nbsp;Selected&nbsp;Object</tt></dd></dl>
+ <dl><dt><a name="-actionRotateRoad"><strong>actionRotateRoad</strong></a>()</dt><dd><tt>Rotate&nbsp;one&nbsp;or&nbsp;more&nbsp;selected&nbsp;roads</tt></dd></dl>
+ <dl><dt><a name="-actionRotateTrafficLight"><strong>actionRotateTrafficLight</strong></a>()</dt><dd><tt>Rotate&nbsp;Selected&nbsp;Traffic&nbsp;Light&nbsp;on&nbsp;a&nbsp;Left&nbsp;Hand&nbsp;Drive&nbsp;Road</tt></dd></dl>
+ <dl><dt><a name="-actionSelect"><strong>actionSelect</strong></a>(objectSelect, *pArgs)</dt></dl>
+ <dl><dt><a name="-actionUsingOwnTerrain"><strong>actionUsingOwnTerrain</strong></a>(OwnTerrainUIList, DefaultTerrainUIList, *args)</dt><dd><tt>Switches&nbsp;on&nbsp;and&nbsp;off&nbsp;UI&nbsp;elements&nbsp;when&nbsp;clicking&nbsp;on&nbsp;the&nbsp;"Use&nbsp;Own&nbsp;Terrain"&nbsp;checkbox<br>
+&nbsp;<br>
+OwnTerrainUIList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;which&nbsp;allows&nbsp;the&nbsp;User&nbsp;to&nbsp;create&nbsp;his&nbsp;own&nbsp;terrain<br>
+DefaultTerrainUIList&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;UI&nbsp;which&nbsp;allows&nbsp;the&nbsp;User&nbsp;to&nbsp;use&nbsp;the&nbsp;default&nbsp;terrain</tt></dd></dl>
+ <dl><dt><a name="-calculateFaceRotation"><strong>calculateFaceRotation</strong></a>()</dt><dd><tt>Calculate&nbsp;and&nbsp;returns&nbsp;the&nbsp;rotation&nbsp;as&nbsp;a&nbsp;vector&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s.&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;first&nbsp;method&nbsp;which&nbsp;uses&nbsp;normals&nbsp;of&nbsp;the&nbsp;face&nbsp;and&nbsp;rotation&nbsp;X&nbsp;and&nbsp;Y.&nbsp;It&nbsp;is&nbsp;better&nbsp;suited&nbsp;for&nbsp;placing&nbsp;objects&nbsp;on&nbsp;curve&nbsp;surfaces.<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;vectors&nbsp;of&nbsp;the&nbsp;rotation&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s</tt></dd></dl>
+ <dl><dt><a name="-calculateFaceRotation_planeMethod"><strong>calculateFaceRotation_planeMethod</strong></a>()</dt><dd><tt>Calculate&nbsp;and&nbsp;returns&nbsp;the&nbsp;rotation&nbsp;as&nbsp;a&nbsp;vector&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s.&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;second&nbsp;method&nbsp;which&nbsp;uses&nbsp;normals&nbsp;of&nbsp;the&nbsp;face&nbsp;and&nbsp;rotation&nbsp;X&nbsp;and&nbsp;Z.&nbsp;<br>
+It&nbsp;is&nbsp;better&nbsp;suited&nbsp;for&nbsp;almost&nbsp;flat&nbsp;planes&nbsp;and&nbsp;creating&nbsp;straight&nbsp;roads.<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;vectors&nbsp;of&nbsp;the&nbsp;rotation&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s</tt></dd></dl>
+ <dl><dt><a name="-calculateFaceVector"><strong>calculateFaceVector</strong></a>()</dt><dd><tt>Calculate&nbsp;and&nbsp;returns&nbsp;the&nbsp;vector&nbsp;translation&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;return&nbsp;the&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;coordinate/s&nbsp;of&nbsp;the&nbsp;center&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s</tt></dd></dl>
+ <dl><dt><a name="-calculateNormalVector"><strong>calculateNormalVector</strong></a>()</dt><dd><tt>Calculate&nbsp;and&nbsp;returns&nbsp;the&nbsp;vector&nbsp;of&nbsp;the&nbsp;normals&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;vector/s&nbsp;of&nbsp;the&nbsp;averaged&nbsp;normals&nbsp;of&nbsp;the&nbsp;selected&nbsp;Face/s</tt></dd></dl>
+ <dl><dt><a name="-calculateSelectedFaces"><strong>calculateSelectedFaces</strong></a>()</dt><dd><tt>Calculate&nbsp;and&nbsp;returns&nbsp;the&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;selected&nbsp;Face/s<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;selected&nbsp;Face/s</tt></dd></dl>
+ <dl><dt><a name="-createAllShader"><strong>createAllShader</strong></a>()</dt><dd><tt>Creates&nbsp;all&nbsp;shaders&nbsp;required&nbsp;for&nbsp;the&nbsp;code.</tt></dd></dl>
+ <dl><dt><a name="-createBuilding"><strong>createBuilding</strong></a>(i)</dt><dd><tt>Creates&nbsp;the&nbsp;default&nbsp;Building&nbsp;1<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;Building</tt></dd></dl>
+ <dl><dt><a name="-createBuilding2"><strong>createBuilding2</strong></a>(i)</dt><dd><tt>Creates&nbsp;the&nbsp;default&nbsp;Building&nbsp;2<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;Building</tt></dd></dl>
+ <dl><dt><a name="-createBuilding3"><strong>createBuilding3</strong></a>(i)</dt><dd><tt>Creates&nbsp;the&nbsp;default&nbsp;Building&nbsp;3<br>
+&nbsp;<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;Building</tt></dd></dl>
+ <dl><dt><a name="-createCrossJunctionShader"><strong>createCrossJunctionShader</strong></a>(currentShadingGroups)</dt><dd><tt>Creates&nbsp;a&nbsp;Cross&nbsp;Junction&nbsp;Lambert&nbsp;Shader<br>
+&nbsp;<br>
+currentShadingGroups&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Consists&nbsp;of&nbsp;all&nbsp;the&nbsp;shading&nbsp;networks</tt></dd></dl>
+ <dl><dt><a name="-createCurveRoadShader"><strong>createCurveRoadShader</strong></a>(currentShadingGroups)</dt><dd><tt>Creates&nbsp;a&nbsp;Curve&nbsp;Road&nbsp;Lambert&nbsp;Shader<br>
+&nbsp;<br>
+currentShadingGroups&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Consists&nbsp;of&nbsp;all&nbsp;the&nbsp;shading&nbsp;networks</tt></dd></dl>
+ <dl><dt><a name="-createGreenShader"><strong>createGreenShader</strong></a>(currentShadingGroups)</dt><dd><tt>Creates&nbsp;a&nbsp;Green&nbsp;Lambert&nbsp;Shader<br>
+&nbsp;<br>
+currentShadingGroups&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Consists&nbsp;of&nbsp;all&nbsp;the&nbsp;shading&nbsp;networks</tt></dd></dl>
+ <dl><dt><a name="-createOrangeShader"><strong>createOrangeShader</strong></a>(currentShadingGroups)</dt><dd><tt>Creates&nbsp;a&nbsp;Orange&nbsp;Lambert&nbsp;Shader<br>
+&nbsp;<br>
+currentShadingGroups&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Consists&nbsp;of&nbsp;all&nbsp;the&nbsp;shading&nbsp;networks</tt></dd></dl>
+ <dl><dt><a name="-createRedShader"><strong>createRedShader</strong></a>(currentShadingGroups)</dt><dd><tt>Creates&nbsp;a&nbsp;Red&nbsp;Lambert&nbsp;Shader<br>
+&nbsp;<br>
+currentShadingGroups&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Consists&nbsp;of&nbsp;all&nbsp;the&nbsp;shading&nbsp;networks</tt></dd></dl>
+ <dl><dt><a name="-createStraightRoadShader"><strong>createStraightRoadShader</strong></a>(currentShadingGroups)</dt><dd><tt>Creates&nbsp;a&nbsp;Straight&nbsp;Road&nbsp;Lambert&nbsp;Shader<br>
+&nbsp;<br>
+currentShadingGroups&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Consists&nbsp;of&nbsp;all&nbsp;the&nbsp;shading&nbsp;networks</tt></dd></dl>
+ <dl><dt><a name="-createTJunctionShader"><strong>createTJunctionShader</strong></a>(currentShadingGroups)</dt><dd><tt>Creates&nbsp;a&nbsp;TJunction&nbsp;Lambert&nbsp;Shader<br>
+&nbsp;<br>
+currentShadingGroups&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Consists&nbsp;of&nbsp;all&nbsp;the&nbsp;shading&nbsp;networks</tt></dd></dl>
+ <dl><dt><a name="-createTerrain"><strong>createTerrain</strong></a>(size)</dt><dd><tt>Creates&nbsp;the&nbsp;Terrain&nbsp;for&nbsp;the&nbsp;objects&nbsp;to&nbsp;be&nbsp;build&nbsp;on<br>
+&nbsp;<br>
+size&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;terrain&nbsp;with&nbsp;each&nbsp;individual&nbsp;face&nbsp;being&nbsp;4&nbsp;units&nbsp;wide&nbsp;and&nbsp;long<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;Terrain&nbsp;that&nbsp;is&nbsp;being&nbsp;created</tt></dd></dl>
+ <dl><dt><a name="-createTerrainNoise"><strong>createTerrainNoise</strong></a>(noiseIntensity, noiseHeight, Terrain, size)</dt><dd><tt>Creates&nbsp;noise&nbsp;on&nbsp;the&nbsp;Terrain<br>
+&nbsp;<br>
+noiseIntensity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;intensity&nbsp;of&nbsp;how&nbsp;much&nbsp;Noise&nbsp;is&nbsp;applied&nbsp;from&nbsp;0&nbsp;to&nbsp;1<br>
+noiseHeight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;translate&nbsp;Y&nbsp;of&nbsp;the&nbsp;Noise&nbsp;that&nbsp;is&nbsp;being&nbsp;applied<br>
+Terrain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;terrain&nbsp;created&nbsp;to&nbsp;apply&nbsp;the&nbsp;noise&nbsp;to<br>
+size&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;terrain&nbsp;with&nbsp;each&nbsp;individual&nbsp;face&nbsp;being&nbsp;4&nbsp;units&nbsp;wide&nbsp;and&nbsp;long<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;the&nbsp;Terrain&nbsp;that&nbsp;is&nbsp;being&nbsp;created</tt></dd></dl>
+ <dl><dt><a name="-createUI"><strong>createUI</strong></a>()</dt><dd><tt>Generates&nbsp;the&nbsp;UI</tt></dd></dl>
+ <dl><dt><a name="-detectCollision"><strong>detectCollision</strong></a>(car1, car2)</dt><dd><tt>Checks&nbsp;whether&nbsp;the&nbsp;bounding&nbsp;box&nbsp;of&nbsp;car1&nbsp;and&nbsp;car2&nbsp;collides<br>
+&nbsp;<br>
+car1&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;first&nbsp;car&nbsp;to&nbsp;check<br>
+car2&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;second&nbsp;car&nbsp;to&nbsp;check<br>
+return&nbsp;&nbsp;:&nbsp;True&nbsp;if&nbsp;collided.&nbsp;False&nbsp;if&nbsp;not&nbsp;collided</tt></dd></dl>
+ <dl><dt><a name="-distance"><strong>distance</strong></a>(obj1, obj2)</dt><dd><tt>Get&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;2&nbsp;objects<br>
+&nbsp;<br>
+obj1&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;first&nbsp;object&nbsp;to&nbsp;compare&nbsp;the&nbsp;distance&nbsp;with<br>
+obj2&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;second&nbsp;object&nbsp;to&nbsp;compare&nbsp;the&nbsp;distance&nbsp;with<br>
+return&nbsp;&nbsp;:&nbsp;the&nbsp;distance&nbsp;between&nbsp;obj1&nbsp;and&nbsp;obj2</tt></dd></dl>
+ <dl><dt><a name="-generateCarTempList"><strong>generateCarTempList</strong></a>(AllSelectedFaces)</dt><dd><tt>Generates&nbsp;a&nbsp;simple&nbsp;car<br>
+&nbsp;<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;generated&nbsp;Cars</tt></dd></dl>
+ <dl><dt><a name="-generateCrossJunctionRoadList"><strong>generateCrossJunctionRoadList</strong></a>(AllSelectedFaces)</dt><dd><tt>Generates&nbsp;the&nbsp;Cross_Junction&nbsp;Roads<br>
+&nbsp;<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;generated&nbsp;Cross&nbsp;Junctions</tt></dd></dl>
+ <dl><dt><a name="-generateRtCurveRoadList"><strong>generateRtCurveRoadList</strong></a>(AllSelectedFaces)</dt><dd><tt>Generates&nbsp;the&nbsp;Rt_Curve&nbsp;Roads<br>
+&nbsp;<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;generated&nbsp;Rt_Curve&nbsp;Roads</tt></dd></dl>
+ <dl><dt><a name="-generateSkyscrapper"><strong>generateSkyscrapper</strong></a>(Skyscrapper_Name, AllSelectedFaces)</dt><dd><tt>Generates&nbsp;the&nbsp;Skyscrapper<br>
+&nbsp;<br>
+Skyscrapper_Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;containing&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;default&nbsp;or&nbsp;the&nbsp;user-inputed&nbsp;objects<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;generated&nbsp;Skyscrappers</tt></dd></dl>
+ <dl><dt><a name="-generateStraightRoadList"><strong>generateStraightRoadList</strong></a>(AllSelectedFaces)</dt><dd><tt>Generates&nbsp;the&nbsp;Straight&nbsp;Roads<br>
+&nbsp;<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;generated&nbsp;Straight&nbsp;Roads</tt></dd></dl>
+ <dl><dt><a name="-generateTJunctionRoadList"><strong>generateTJunctionRoadList</strong></a>(AllSelectedFaces)</dt><dd><tt>Generates&nbsp;the&nbsp;T_Junction&nbsp;Roads<br>
+&nbsp;<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;generated&nbsp;T_Junctions</tt></dd></dl>
+ <dl><dt><a name="-generateTrafficLightList"><strong>generateTrafficLightList</strong></a>(AllSelectedFaces)</dt><dd><tt>Generates&nbsp;Traffic&nbsp;Lights<br>
+&nbsp;<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;retuns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;generated&nbsp;Traffic&nbsp;Lights</tt></dd></dl>
+ <dl><dt><a name="-inJunction"><strong>inJunction</strong></a>(car, juncIndex)</dt><dd><tt>Checks&nbsp;whether&nbsp;a&nbsp;car&nbsp;is&nbsp;in&nbsp;a&nbsp;junction<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;car&nbsp;that&nbsp;is&nbsp;being&nbsp;check<br>
+juncIndex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;Junction&nbsp;index&nbsp;in&nbsp;the&nbsp;Junction&nbsp;list<br>
+return&nbsp;&nbsp;:&nbsp;True&nbsp;if&nbsp;collided.&nbsp;False&nbsp;if&nbsp;not&nbsp;collided</tt></dd></dl>
+ <dl><dt><a name="-inWorld"><strong>inWorld</strong></a>(car, WorldPlane)</dt><dd><tt>Checks&nbsp;whether&nbsp;a&nbsp;car&nbsp;is&nbsp;on&nbsp;the&nbsp;plane<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;car&nbsp;that&nbsp;is&nbsp;being&nbsp;check<br>
+WorldPlane&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;string&nbsp;of&nbsp;the&nbsp;WorldPlane<br>
+return&nbsp;&nbsp;:&nbsp;True&nbsp;if&nbsp;still&nbsp;in&nbsp;the&nbsp;world.&nbsp;False&nbsp;if&nbsp;not&nbsp;in&nbsp;the&nbsp;world</tt></dd></dl>
+ <dl><dt><a name="-onRoad"><strong>onRoad</strong></a>(car, roadIndex)</dt><dd><tt>Checks&nbsp;whether&nbsp;a&nbsp;car&nbsp;is&nbsp;on&nbsp;a&nbsp;straight&nbsp;road<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;car&nbsp;that&nbsp;is&nbsp;being&nbsp;check<br>
+roadIndex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;road&nbsp;position&nbsp;in&nbsp;the&nbsp;straight&nbsp;road&nbsp;list<br>
+return&nbsp;&nbsp;:&nbsp;True&nbsp;if&nbsp;collided.&nbsp;False&nbsp;if&nbsp;not&nbsp;collided</tt></dd></dl>
+ <dl><dt><a name="-onTrafficRoad"><strong>onTrafficRoad</strong></a>(car, roadIndex)</dt><dd><tt>Checks&nbsp;whether&nbsp;a&nbsp;car&nbsp;is&nbsp;on&nbsp;a&nbsp;straight&nbsp;road<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;car&nbsp;that&nbsp;is&nbsp;being&nbsp;check<br>
+roadIndex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;road&nbsp;index&nbsp;in&nbsp;the&nbsp;trafficRoadList<br>
+return&nbsp;&nbsp;:&nbsp;True&nbsp;if&nbsp;collided.&nbsp;False&nbsp;if&nbsp;not&nbsp;collided</tt></dd></dl>
+ <dl><dt><a name="-placeStructure"><strong>placeStructure</strong></a>(object_name, AllSelectedFaces, rotationMethod)</dt><dd><tt>Generates&nbsp;the&nbsp;structure&nbsp;on&nbsp;the&nbsp;selected&nbsp;face<br>
+&nbsp;<br>
+object_name&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;a&nbsp;list&nbsp;containing&nbsp;the&nbsp;names&nbsp;of&nbsp;all&nbsp;the&nbsp;objects&nbsp;to&nbsp;be&nbsp;placed<br>
+AllSelectedFaces&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;faces&nbsp;that&nbsp;are&nbsp;selected<br>
+rotationMethod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;is&nbsp;the&nbsp;method&nbsp;of&nbsp;rotation&nbsp;during&nbsp;placement&nbsp;that&nbsp;the&nbsp;user&nbsp;has&nbsp;chosen</tt></dd></dl>
+ <dl><dt><a name="-state_carCrash"><strong>state_carCrash</strong></a>(car)</dt><dd><tt>Cause&nbsp;the&nbsp;car&nbsp;to&nbsp;crash<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+State&nbsp;-2</tt></dd></dl>
+ <dl><dt><a name="-state_carStop"><strong>state_carStop</strong></a>(car)</dt><dd><tt>Cause&nbsp;the&nbsp;car&nbsp;to&nbsp;stop<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+State&nbsp;-1</tt></dd></dl>
+ <dl><dt><a name="-state_continueStraight"><strong>state_continueStraight</strong></a>(car)</dt><dd><tt>Cause&nbsp;the&nbsp;car&nbsp;to&nbsp;continue&nbsp;straight<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+State&nbsp;4</tt></dd></dl>
+ <dl><dt><a name="-state_goStraight"><strong>state_goStraight</strong></a>(car)</dt><dd><tt>Cause&nbsp;the&nbsp;car&nbsp;to&nbsp;move&nbsp;forward<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+State&nbsp;0</tt></dd></dl>
+ <dl><dt><a name="-state_greenLight"><strong>state_greenLight</strong></a>(trafficRedLight, trafficOrangeLight, trafficGreenLight)</dt><dd><tt>Change&nbsp;the&nbsp;state&nbsp;of&nbsp;the&nbsp;Traffic&nbsp;light&nbsp;to&nbsp;show&nbsp;an&nbsp;Green&nbsp;light<br>
+&nbsp;<br>
+trafficRedLight&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;red&nbsp;light<br>
+trafficOrangeLight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;orange&nbsp;light<br>
+trafficGreenLight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;green&nbsp;light<br>
+State&nbsp;G</tt></dd></dl>
+ <dl><dt><a name="-state_orangeLight"><strong>state_orangeLight</strong></a>(trafficRedLight, trafficOrangeLight, trafficGreenLight)</dt><dd><tt>Change&nbsp;the&nbsp;state&nbsp;of&nbsp;the&nbsp;Traffic&nbsp;light&nbsp;to&nbsp;show&nbsp;an&nbsp;Orange&nbsp;light<br>
+&nbsp;<br>
+trafficRedLight&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;red&nbsp;light<br>
+trafficOrangeLight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;orange&nbsp;light<br>
+trafficGreenLight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;green&nbsp;light<br>
+State&nbsp;O</tt></dd></dl>
+ <dl><dt><a name="-state_redLight"><strong>state_redLight</strong></a>(trafficRedLight, trafficOrangeLight, trafficGreenLight)</dt><dd><tt>Change&nbsp;the&nbsp;state&nbsp;of&nbsp;the&nbsp;Traffic&nbsp;light&nbsp;to&nbsp;show&nbsp;a&nbsp;red&nbsp;light<br>
+&nbsp;<br>
+trafficRedLight&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;red&nbsp;light<br>
+trafficOrangeLight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;orange&nbsp;light<br>
+trafficGreenLight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:The&nbsp;polysphere&nbsp;that&nbsp;represents&nbsp;the&nbsp;green&nbsp;light<br>
+State&nbsp;R</tt></dd></dl>
+ <dl><dt><a name="-state_tiltLeft"><strong>state_tiltLeft</strong></a>(car)</dt><dd><tt>Car&nbsp;tilts&nbsp;left&nbsp;based&nbsp;on&nbsp;direction&nbsp;it&nbsp;is&nbsp;facing<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+No&nbsp;State</tt></dd></dl>
+ <dl><dt><a name="-state_tiltRight"><strong>state_tiltRight</strong></a>(car)</dt><dd><tt>Car&nbsp;tilts&nbsp;right&nbsp;based&nbsp;on&nbsp;direction&nbsp;it&nbsp;is&nbsp;facing<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+No&nbsp;State</tt></dd></dl>
+ <dl><dt><a name="-state_turnLeft"><strong>state_turnLeft</strong></a>(car)</dt><dd><tt>Cause&nbsp;the&nbsp;car&nbsp;to&nbsp;turn&nbsp;left<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+State&nbsp;2</tt></dd></dl>
+ <dl><dt><a name="-state_turnRight"><strong>state_turnRight</strong></a>(car)</dt><dd><tt>Cause&nbsp;the&nbsp;car&nbsp;to&nbsp;turn&nbsp;right<br>
+&nbsp;<br>
+car&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;car&nbsp;to&nbsp;undergo&nbsp;the&nbsp;state<br>
+State&nbsp;3</tt></dd></dl>
+ <dl><dt><a name="-update"><strong>update</strong></a>(frame)</dt><dd><tt>Main&nbsp;AI&nbsp;function&nbsp;that&nbsp;executes&nbsp;all&nbsp;car&nbsp;behaviour.<br>
+Run&nbsp;in&nbsp;expression&nbsp;editor:&nbsp;python("<a href="#-update">update</a>("+frame+")");</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CurveRoadList</strong> = []<br>
+<strong>RoadList</strong> = []<br>
+<strong>T_J_RoadList</strong> = []<br>
+<strong>V_Fast</strong> = (0, 0, 1)<br>
+<strong>V_Slow</strong> = (0, 0, 0.5)<br>
+<strong>V_Stop</strong> = (0, 0, 0)<br>
+<strong>V_TurnLeft</strong> = (0, 0, 0.29999999999999999)<br>
+<strong>V_TurnRight</strong> = (0, 0, 0.45000000000000001)<br>
+<strong>WorldPlane</strong> = None<br>
+<strong>X_J_RoadList</strong> = []<br>
+<strong>carList</strong> = []<br>
+<strong>juncList</strong> = []<br>
+<strong>linked_trafficList</strong> = []<br>
+<strong>straightRoadList</strong> = []<br>
+<strong>trafficList</strong> = []<br>
+<strong>trafficRoadList</strong> = []<br>
+<strong>variables_reload</strong> = 0</td></tr></table>
+</body></html>
